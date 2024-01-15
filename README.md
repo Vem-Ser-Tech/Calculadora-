@@ -16,7 +16,9 @@ Teremos operações básicas como:
 
 <br>
 Teremos operações complexas como:
-* Fatorial,
-* Potencialização,
-* Radiciação,
-* Logarítmos
+Fatorial,
+Potencialização,
+Radiciação,
+Logarítmos
+
+
