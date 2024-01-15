@@ -22,6 +22,7 @@ function calcular(numero1, numero2, operacao) {
     }
 }
 
+
 // Função principal
 function main() {
     // Solicitar ao usuário que insira dois números
