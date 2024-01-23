@@ -23,6 +23,8 @@ function calcular(numero1, numero2, operacao) {
       return Math.pow(numero1, numero2);
     case "fatorial":
       return fatorial(numero1);
+    case "porcentagem":
+        return porcentagem(numero1, numero2);
     default:
       return "Operação inválida";
   }
@@ -32,7 +34,7 @@ function calcular(numero1, numero2, operacao) {
 function main() {
   rl.question(
     // Solicitar ao usuário que escolha uma operação
-    "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial, raiz quadrada): ",
+    "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial, raiz quadrada, porcentagem): ",
     (operacao) => {
       if (
         operacao === "soma" ||
@@ -41,6 +43,7 @@ function main() {
         operacao === "divisao" ||
         operacao === "potencia" ||
         operacao === "fatorial" ||
+        operacao === "porcentagem" ||
         operacao === "raiz quadrada"
       ) {
         // para opções com um numero
@@ -92,6 +95,10 @@ function fatorial(n) {
     n *= i;
   }
   return n;
+}
+function porcentagem(numero1, numero2){
+  return (numero1 * numero2) / 100;
+
 }
 
 // Chamar a função principal
