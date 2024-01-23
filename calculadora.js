@@ -17,6 +17,8 @@ function calcular(numero1, numero2, operacao) {
       return numero1 * numero2;
     case "divisao":
       return numero1 / numero2;
+    case "raiz quadrada":
+      return calcularRaizQuadrada(numero1);
     case "potencia":
       return Math.pow(numero1, numero2);
     case "fatorial":
@@ -30,7 +32,7 @@ function calcular(numero1, numero2, operacao) {
 function main() {
   rl.question(
     // Solicitar ao usuário que escolha uma operação
-    "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial): ",
+    "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial, raiz quadrada): ",
     (operacao) => {
       if (
         operacao === "soma" ||
@@ -38,10 +40,11 @@ function main() {
         operacao === "multiplicacao" ||
         operacao === "divisao" ||
         operacao === "potencia" ||
-        operacao === "fatorial"
+        operacao === "fatorial" ||
+        operacao === "raiz quadrada"
       ) {
         // para opções com um numero
-        if (operacao === "fatorial") {
+        if (operacao === "fatorial" || operacao === "raiz quadrada") {
           rl.question("Digite um número: ", (numero1) => {
             //Chamar a função calcular e exibir o resultado para fatorial
             let resultado = calcular(parseFloat(numero1), 0, operacao);
@@ -70,30 +73,20 @@ function main() {
     }
   );
 }
-// function main() {
-//   // Solicitar ao usuário que insira dois números
-//   rl.question("Digite o primeiro número: ", (numero1) => {
-//     rl.question("Digite o segundo número: ", (numero2) => {
-//       // Solicitar ao usuário que escolha uma operação
-//       rl.question(
-//         "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial): ",
-//         (operacao) => {
-//           // Chamar a função calcular e exibir o resultado
-//           let resultado = calcular(
-//             parseFloat(numero1),
-//             parseFloat(numero2),
-//             operacao
-//           );
-//           console.log(`O resultado da operação ${operacao} é: ${resultado}`);
-
-//           // Fechar a interface de leitura e escrita
-//           rl.close();
-//         }
-//       );
-//     });
-//   });
-// }
-
+// função Raiz Quadrada
+function calcularRaizQuadrada(numero) {
+  if (numero < 0) {
+    return "Não e possível calcular raiz quadrada de um número negativo!";
+  }
+  return Math.sqrt(numero);
+}
+// função Raiz Quadrada
+function calcularRaizQuadrada(numero) {
+  if (numero < 0) {
+    return "Não e possível calcular raiz quadrada de um número negativo!";
+  }
+  return Math.sqrt(numero);
+}
 // Função para operação fatorial
 function fatorial(n) {
   // fatorial de 0 e 1 é 1
