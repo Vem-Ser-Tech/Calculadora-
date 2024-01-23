@@ -73,13 +73,7 @@ function main() {
     }
   );
 }
-// função Raiz Quadrada
-function calcularRaizQuadrada(numero) {
-  if (numero < 0) {
-    return "Não e possível calcular raiz quadrada de um número negativo!";
-  }
-  return Math.sqrt(numero);
-}
+
 // função Raiz Quadrada
 function calcularRaizQuadrada(numero) {
   if (numero < 0) {
