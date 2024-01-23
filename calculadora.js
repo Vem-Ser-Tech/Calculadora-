@@ -70,29 +70,6 @@ function main() {
     }
   );
 }
-// function main() {
-//   // Solicitar ao usuário que insira dois números
-//   rl.question("Digite o primeiro número: ", (numero1) => {
-//     rl.question("Digite o segundo número: ", (numero2) => {
-//       // Solicitar ao usuário que escolha uma operação
-//       rl.question(
-//         "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial): ",
-//         (operacao) => {
-//           // Chamar a função calcular e exibir o resultado
-//           let resultado = calcular(
-//             parseFloat(numero1),
-//             parseFloat(numero2),
-//             operacao
-//           );
-//           console.log(`O resultado da operação ${operacao} é: ${resultado}`);
-
-//           // Fechar a interface de leitura e escrita
-//           rl.close();
-//         }
-//       );
-//     });
-//   });
-// }
 
 // Função para operação fatorial
 function fatorial(n) {
