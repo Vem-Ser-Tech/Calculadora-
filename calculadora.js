@@ -16,12 +16,20 @@ function calcular(numero1, numero2, operacao) {
         case 'multiplicacao':
             return numero1 * numero2;
         case 'divisao':
-            return numero1 / numero2;
+            return numero1 / numero2;  
+        case 'raiz quadrada':
+            return calcularRaizQuadrada(numero1)
         default:
             return 'Operação inválida';
     }
 }
-
+ // função Raiz Quadrada
+function calcularRaizQuadrada(numero) {
+   if (numero < 0){
+    return 'Não e possível calcular raiz quadrada de um número negativo!'
+   }
+   return Math.sqrt(numero);
+}
 
 // Função principal
 function main() {
@@ -29,7 +37,7 @@ function main() {
     rl.question('Digite o primeiro número: ', (numero1) => {
         rl.question('Digite o segundo número: ', (numero2) => {
             // Solicitar ao usuário que escolha uma operação
-            rl.question('Escolha a operação (soma, subtracao, multiplicacao, divisao): ', (operacao) => {
+            rl.question('Escolha a operação (soma, subtracao, multiplicacao, divisao, raiz quadrada): ', (operacao) => {
                 // Chamar a função calcular e exibir o resultado
                 let resultado = calcular(parseFloat(numero1), parseFloat(numero2), operacao);
                 console.log(`O resultado da operação ${operacao} é: ${resultado}`);
