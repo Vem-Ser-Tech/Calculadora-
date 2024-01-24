@@ -87,7 +87,10 @@ const Calculadora = () => {
           <button className="orange" onClick={() => operatorHandler('+')}>+</button>
           <button className="gray" onClick={() => inputNum({ target: { value: '0' } })}>0</button>
           <button className="gray" onClick={() => inputNum({ target: { value: '.' } })}>,</button>
-          <button className="gray" style={{ visibility: "hidden" }}>,</button>
+          
+          <button>
+            <div style={{ fontSize: "small", fontWeight: "bold" }}>Científica</div>
+          </button>
 
           <button className="orange" onClick={() => operatorHandler('=')}>=</button>
         </div>
