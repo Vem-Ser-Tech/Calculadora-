@@ -27,6 +27,8 @@ function calcular(numero1, numero2, operacao) {
       return logaritmo(numero1);
     case "porcentagem":
         return porcentagem(numero1, numero2);
+    case "fracao":
+      return calcularFracao(numero1); 
     default:
       return "Operação inválida";
   }
@@ -36,18 +38,19 @@ function calcular(numero1, numero2, operacao) {
 function main() {
   rl.question(
     // Solicitar ao usuário que escolha uma operação
-    "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial, raiz quadrada, porcentagem, logaritmo): ",
+    "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial, raiz quadrada, porcentagem, logaritmo, fracao): ",
     (operacao) => {
       if (
         operacao === "soma" ||
-        operacao === "sutracao" ||
+        operacao === "subtracao" ||
         operacao === "multiplicacao" ||
         operacao === "divisao" ||
         operacao === "potencia" ||
         operacao === "logaritmo" ||
         operacao === "fatorial" ||
         operacao === "porcentagem" ||
-        operacao === "raiz quadrada"
+        operacao === "raiz quadrada"||
+        operacao === "fracao"
       ) {
         // para opções com um numero
         if (operacao === "fatorial" || operacao === "raiz quadrada" || operacao === "logaritmo" ) {
@@ -105,6 +108,12 @@ function logaritmo (numero1){
 function porcentagem(numero1, numero2){
   return (numero1 * numero2) / 100;
 
+}
+
+//Função para fração
+function calcularFracao(numero) {
+  const fracao = 1 / (numero);
+  return fracao;
 }
 
 // Chamar a função principal
