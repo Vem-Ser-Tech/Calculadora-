@@ -8,17 +8,18 @@ A função main então chama a função calcular com os números e a operação 
 O resultado é exibido no console.
 
 <br>
-Teremos operações básicas como:
-* Soma,
-* Subtração,
-* Divisão,
-* Multiplicação.
+Teremos operações básicas como:<br>
+Soma,<br>
+Subtração,<br>
+Divisão,<br>
+Multiplicação.<br>
 
-<br>
-Teremos operações complexas como:
-Fatorial,
-Potencialização,
-Radiciação,
-Logarítmos
+<br><br>
+
+Teremos operações complexas como:<br>
+Fatorial,<br>
+Potencialização,<br>
+Porcentagem,<br>
+Logarítmos<br>
 
 

@@ -23,6 +23,10 @@ function calcular(numero1, numero2, operacao) {
       return Math.pow(numero1, numero2);
     case "fatorial":
       return fatorial(numero1);
+      case "logaritmo":
+      return logaritmo(numero1);
+    case "porcentagem":
+        return porcentagem(numero1, numero2);
     case "fracao":
       return calcularFracao(numero1); 
     default:
@@ -34,7 +38,7 @@ function calcular(numero1, numero2, operacao) {
 function main() {
   rl.question(
     // Solicitar ao usuário que escolha uma operação
-    "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial, raiz quadrada, fracao): ",
+    "Escolha a operação (soma, subtracao, multiplicacao, divisao, potencia, fatorial, raiz quadrada, porcentagem, logaritmo, fracao): ",
     (operacao) => {
       if (
         operacao === "soma" ||
@@ -42,12 +46,14 @@ function main() {
         operacao === "multiplicacao" ||
         operacao === "divisao" ||
         operacao === "potencia" ||
+        operacao === "logaritmo" ||
         operacao === "fatorial" ||
+        operacao === "porcentagem" ||
         operacao === "raiz quadrada"||
         operacao === "fracao"
       ) {
         // para opções com um numero
-        if (operacao === "fatorial" || operacao === "raiz quadrada") {
+        if (operacao === "fatorial" || operacao === "raiz quadrada" || operacao === "logaritmo" ) {
           rl.question("Digite um número: ", (numero1) => {
             //Chamar a função calcular e exibir o resultado para fatorial
             let resultado = calcular(parseFloat(numero1), 0, operacao);
@@ -95,6 +101,13 @@ function fatorial(n) {
     n *= i;
   }
   return n;
+}
+function logaritmo (numero1){
+  return Math.log10(numero1);
+}
+function porcentagem(numero1, numero2){
+  return (numero1 * numero2) / 100;
+
 }
 
 //Função para fração
