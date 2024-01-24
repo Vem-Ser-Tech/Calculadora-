@@ -19,21 +19,21 @@ function calcularFatorial(numero) {
 }
 
 // Função para realizar uma operação aritmética
-function calcular(numero1, numero2, operacao) {
-  switch (operacao) {
-    case "soma":
+function calcular(numero1, numero2, operador) {
+  switch (operador) {
+    case '+':
       return numero1 + numero2;
-    case "subtracao":
+    case '-':
       return numero1 - numero2;
-    case "multiplicacao":
+    case '*':
       return numero1 * numero2;
-    case "divisao":
+    case '/':
       return numero1 / numero2;
-    case "raiz quadrada":
+    case 'raiz quadrada':
       return calcularRaizQuadrada(numero1);
-    case "potencia":
+    case 'potencia':
       return Math.pow(numero1, numero2);
-    case "fatorial":
+    case 'fatorial':
       return calcularFatorial(numero1);
     default:
       return "Operação inválida";

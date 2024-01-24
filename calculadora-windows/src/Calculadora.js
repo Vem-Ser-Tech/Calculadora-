@@ -1,69 +1,95 @@
 import React, { useState } from 'react';
 import './Calculadora.css';
-import { calcular, calcularRaizQuadrada, calcularFatorial } from './calcular';
 import { Box } from "@mui/system";
 import Container from "@mui/material/Container";
 
 const Calculadora = () => {
-  const [numero1, setNumero1] = useState('');
-  const [numero2, setNumero2] = useState('');
-  const [operacao, setOperacao] = useState('');
-  const [resultado, setResultado] = useState('');
+  const [num, setNum] = useState('0');
+  const [history, setHistory] = useState('');
+  const [operator, setOperator] = useState('');
 
-  const handleNumeroChange = (e) => {
-    const { name, value } = e.target;
-    name === 'numero1' ? setNumero1(value) : setNumero2(value);
-  };
+  function inputNum(e) {
+    const input = e.target.value;
+    setNum((prevNum) => (prevNum === '0' || operator) ? input : prevNum + input);
+    setOperator('');
+  }
 
-  const handleOperacaoChange = (e) => {
-    setOperacao(e.target.value);
-  };
+  function clear() {
+    setNum('0');
+    setHistory('');
+    setOperator('');
+  }
 
-  const handleCalcular = () => {
-    let resultado;
-    if (operacao === 'raiz quadrada') {
-      resultado = calcularRaizQuadrada(parseFloat(numero1));
-    } else if (operacao === 'fatorial') {
-      resultado = calcularFatorial(parseFloat(numero1));
+  function percentage() {
+    const result = parseFloat(num) / 100;
+    setNum(String(result));
+    updateHistory(result);
+  }
+
+  function changeSign() {
+    const result = -parseFloat(num);
+    setNum(String(result));
+    updateHistory(result);
+  }
+
+  function operatorHandler(operatorInput) {
+    if (operatorInput === '=') {
+      calculate();
     } else {
-      resultado = calcular(parseFloat(numero1), parseFloat(numero2), operacao);
+      setOperator(operatorInput);
+      setHistory(num + operatorInput);
     }
-    setResultado(`O resultado da operação ${operacao} é: ${resultado}`);
-  };
+  }
+
+  function calculate() {
+    const result = evaluateExpression(history + num);
+    setNum(String(result));
+    setHistory('');
+    setOperator('');
+  }
+
+  function updateHistory(result) {
+    setHistory(history + operator + num + '=' + result);
+  }
+
+  function evaluateExpression(expression) {
+    return eval(expression);
+  }
 
   return (
     <div>
       <Box m={5} />
       <Container maxWidth="xs">
         <div className="wrapper">
-        <Box m={12} />
-          <input
-            type="number"
-            name="numero1"
-            value={numero1}
-            onChange={handleNumeroChange}
-            placeholder="Digite o primeiro número"
-          />
-          {operacao !== 'raiz quadrada' && operacao !== 'fatorial' && (
-            <input
-              type="number"
-              name="numero2"
-              value={numero2}
-              onChange={handleNumeroChange}
-              placeholder="Digite o segundo número"
-            />
-          )}
-          <select onChange={handleOperacaoChange}>
-            <option value="soma">Soma</option>
-            <option value="subtracao">Subtração</option>
-            <option value="multiplicacao">Multiplicação</option>
-            <option value="divisao">Divisão</option>
-            <option value="raiz quadrada">Raiz Quadrada</option>
-            <option value="potencia">Potência</option>
-            <option value="fatorial">Fatorial</option>
-          </select>
-          <button onClick={handleCalcular}>=</button>
-          <p className='result'>{resultado}</p>
+          <Box m={12}></Box>
+          <h1 className="result" name="resultado">{num}</h1>
+          <div className="history">{history}</div>
+
+          <button onClick={clear}>AC</button>
+          <button onClick={changeSign}>+/-</button>
+          <button onClick={percentage}>%</button>
+
+          <button className="orange" onClick={() => operatorHandler('/')}>/</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '7' } })}>7</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '8' } })}>8</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '9' } })}>9</button>
+
+          <button className="orange" onClick={() => operatorHandler('*')}>X</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '4' } })}>4</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '5' } })}>5</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '6' } })}>6</button>
+
+          <button className="orange" onClick={() => operatorHandler('-')}>-</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '1' } })}>1</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '2' } })}>2</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '3' } })}>3</button>
+
+          <button className="orange" onClick={() => operatorHandler('+')}>+</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '0' } })}>0</button>
+          <button className="gray" onClick={() => inputNum({ target: { value: '.' } })}>,</button>
+          <button className="gray" style={{ visibility: "hidden" }}>,</button>
+
+          <button className="orange" onClick={() => operatorHandler('=')}>=</button>
         </div>
       </Container>
     </div>
